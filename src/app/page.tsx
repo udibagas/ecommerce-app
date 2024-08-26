@@ -1,5 +1,7 @@
 import Image from "next/image";
+// import Comp from "@/components/Comp" // import alias pake @
 
+// path: /app/page.tsx
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

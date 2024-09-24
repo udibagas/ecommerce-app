@@ -1,23 +1,23 @@
-import { Product } from "@/app/products/page"
+import { ProductType } from "@/types/ProductType"
 import Link from "next/link"
 
 type Props = {
-  product: Product
+  product: ProductType
 }
 
 export default function Card(props: Props) {
   return (
-    <div className="card bg-base-100 w-56 h-[600px] shadow-xl">
+    <div className="card bg-base-100 w-56 shadow-xl">
       <figure>
         <img
           src={props.product.image}
-          alt="Shoes" />
+          alt="Shoes" className="h-48" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{props.product.title}</h2>
-        <p className="truncate">{props.product.description}</p>
+        <div className="font-bold line-clamp-2">{props.product.title}</div>
+        {/* <p className="truncate">{props.product.description}</p> */}
         <div className="card-actions justify-end">
-          <Link href={'/products/' + props.product.id} className="btn btn-primary">Detail</Link>
+          <Link href={'/products/' + props.product._id} className="btn btn-primary">Detail</Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,9 @@
+'use client'
+
 import Link from "next/link"
 
 export default function Navbar() {
+  console.log("Ini console.lognya harusnya keluar dibrowser")
   return (
     <div className="navbar container mx-auto bg-base-100">
       <div className="navbar-start">
@@ -34,7 +37,7 @@ export default function Navbar() {
                 Wishlists</Link></li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a onClick={() => alert("jalan diclick")} className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -45,6 +48,12 @@ export default function Navbar() {
           <li>
             <Link href='/products'>
               Products</Link></li>
+          <li>
+            <Link href='/products/create'>
+              Create Product (Server)</Link></li>
+          <li>
+            <Link href='/products/create-client'>
+              Create Product (Client)</Link></li>
           <li>
             <Link href='/wishlists'>
               Wishlists</Link></li>

@@ -4,38 +4,35 @@
 // path: /src/app/products/page.(tsx|jsx|js)
 
 import Card from "@/components/Card"
-
-export interface Product {
-  id: string
-  title: string
-  price: number
-  description: string
-  category: string
-  image: string
-  rating: {
-    rate: number
-    count: number
-  }
-}
+import { ProductModel } from "@/models/ProductModel"
+import { ProductType } from "@/types/ProductType"
 
 async function getProducts() {
-  const response = await fetch("http://localhost:3001/products")
-  const data = await response.json() as Product[]
-  console.log(data, "<<< data")
-  return data
+  try {
+    const response = await fetch("http://localhost:3000/api/products")
+    const data = await response.json() as ProductType[]
+
+    // console.log(data, "<<< data")
+    return data
+  } catch (error) {
+    throw new Error("Failed to get data products")
+  }
 }
 
 async function Products() {
   const data = await getProducts()
+  console.log("get data success")
+
+  // throw new Error("Error di component langsung")
 
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-4xl font-semibold mb-4">Products</h1>
       <div className="flex gap-5 flex-wrap">
         {
-          data.map(product => {
+          data.map((product, i) => {
             return (
-              <Card product={product} />
+              <Card key={i} product={product} />
             )
           })
         }
